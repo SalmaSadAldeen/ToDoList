@@ -7,11 +7,9 @@ import { useContext } from "react";
 import { TodosContext } from "../context/todosContext";
 import "../App.css";
 
-// ضفنا showUpdate و showDelete كـ props
 export default function Todo({ todo, showDelete, showUpdate }) {
   const { dispatch } = useContext(TodosContext);
   function handleCheckClick() {
-    // إرسال الأكشن للـ Reducer لتغيير حالة المهمة
     dispatch({ type: "toggledCompleted", payload: { id: todo.id } });
   }
   return (
@@ -29,7 +27,6 @@ export default function Todo({ todo, showDelete, showUpdate }) {
       <CardContent>
         <Grid container spacing={2} alignItems="center">
           <Grid size={{ xs: 4 }} sx={{ display: "flex", gap: "10px" }}>
-            {/* زر التعديل ينادي الدالة من الأب */}
             <IconButton
               onClick={() => showUpdate(todo)}
               sx={{ color: "#4caf50", border: "1px solid #e0e0e0" }}
@@ -47,7 +44,6 @@ export default function Todo({ todo, showDelete, showUpdate }) {
               <span>✓</span>
             </IconButton>
 
-            {/* زر الحذف ينادي الدالة من الأب */}
             <IconButton
               onClick={() => showDelete(todo)}
               sx={{ color: "#f44336", border: "1px solid #e0e0e0" }}
