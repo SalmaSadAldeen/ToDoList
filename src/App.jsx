@@ -1,9 +1,9 @@
 import "./App.css";
 import TodoList from "./components/TodoList";
-import { useReducer } from "react"; // استبدلنا useState بـ useReducer
+import { useReducer } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { TodosContext } from "./context/todosContext";
-import todosReducer from "./context/todosReducer"; // استيراد الـ Reducer اللي كتبناه
+import todosReducer from "./context/todosReducer";
 
 const theme = createTheme({
   typography: {
@@ -17,8 +17,6 @@ const theme = createTheme({
 });
 
 function App() {
-  // 1. استخدام useReducer بدلاً من useState
-  // القيمة المبدئية هي مصفوفة فارغة لأن الـ Reducer سيجلب البيانات من الـ LocalStorage لاحقاً
   const [todos, dispatch] = useReducer(todosReducer, []);
 
   return (
@@ -35,7 +33,6 @@ function App() {
           margin: 0,
         }}
       >
-        {/* 2. نمرر الـ dispatch بدلاً من الـ setTodos */}
         <TodosContext.Provider value={{ todos, dispatch }}>
           <TodoList />
         </TodosContext.Provider>
